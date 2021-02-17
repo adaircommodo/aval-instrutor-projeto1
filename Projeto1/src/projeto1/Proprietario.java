@@ -11,8 +11,21 @@ public class Proprietario {
 	private Date dataDeNascimento;
 	
 	Proprietario(String nome, String cpf, String rg, Endereco endereco) {
-		        
-		this.setNome(nome);
+		
+		//1 - Verificar se a String é nula
+		if (nome == null || cpf == null || rg == null ) {
+            throw new RuntimeException("Erro de Preenchimento de String");
+        }
+		//2- Verificar se a String está vazia
+        if (nome.isEmpty() || cpf.isEmpty() || rg.isEmpty()) {
+            throw new RuntimeException("Erro de Preenchimento de String");
+        }
+        //3 - Verificar se a String não possui algum caractere válido
+        if (nome.trim().isEmpty() || cpf.trim().isEmpty() || rg.trim().isEmpty()) {
+            throw new RuntimeException("Erro de Preenchimento de String");
+        }        
+		
+        this.setNome(nome);
 		this.setCpf(cpf);
 		this.setRg(rg);
 		this.setEndereco(endereco);
